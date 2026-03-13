@@ -15,9 +15,9 @@ To bridge this gap, I decided to build a comprehensive End-to-End (E2E) Machine 
 ## 📸 Application Interface
 *(Below are previews of the interactive Streamlit dashboard used for real-time price prediction)*
 
-![Streamlit Interface 1](assets/streamlit_interface_1.png)
+![Streamlit Interface 1](streamlit_interface_1.png)
 
-![Streamlit Interface 2](assets/streamlit_interface_2.png)
+![Streamlit Interface 2](streamlit_interface_2.png)
 
 ---
 
