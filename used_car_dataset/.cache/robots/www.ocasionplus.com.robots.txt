@@ -1,0 +1,46 @@
+# OP pro 1.2
+User-agent: *
+Allow: *.js$
+Allow: *.css$
+Disallow: /vender-mi-coche/cambio/*
+Disallow: *?gallery=mantenimiento
+Disallow: *?gallery=revision
+Disallow: *?gallery=*
+Disallow: */print/
+Disallow: /*tipo=
+Disallow: *?marca=*
+Disallow: *?modelo=*
+Disallow: *?cambio=*
+Disallow: *?combustible=*
+Disallow: *?price_min=*
+Disallow: *?price_max=*
+Disallow: *?km_min=*
+Disallow: *?km_max=*
+Disallow: *?carroceria=*
+Disallow: *?potencia_min=*
+Disallow: *?potencia_max=*
+Disallow: *?year_min=*
+Disallow: *?year_max=*
+Disallow: *?puertas=*
+Disallow: *?plazas=*
+Disallow: *?iva_deducible=*
+Disallow: *?km_0=*
+Disallow: *?ofertas_especiales=*
+Disallow: *?type=*
+Disallow: *?location=*
+Disallow: *?sort=*
+Disallow: */search
+Disallow: /coches-segunda-mano/*/mas-info
+Disallow: /coches-segunda-mano/*/pedir-cita
+Disallow: /coches-segunda-mano/*/quiero-reservarlo
+
+User-agent: dotbot
+User-agent: AhrefsBot
+User-agent: SemrushBot
+Crawl-delay: 60
+
+Sitemap: https://www.ocasionplus.com/sitemap.xml
+Sitemap: https://www.ocasionplus.com/sitemap.old.xml
+
+# Archivo de entidades autorizadas para uso de datos IA
+llms: https://www.ocasionplus.com/llms.txt

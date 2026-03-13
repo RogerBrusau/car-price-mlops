@@ -1,0 +1,25 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Caché de Python y Mac
+__pycache__/
+*.pyc
+.DS_Store
+
+# Bases de datos del scraper y datos crudos pesados
+used_car_dataset/data/bronze/
+used_car_dataset/data/silver/
+used_car_dataset/data/**/*.sqlite
+used_car_dataset/data/**/*.sqlite-shm
+used_car_dataset/data/**/*.sqlite-wal
+
+# Carpetas de backups o código descartado
+arxius vells/
+
+# Archivos antiguos o que no usamos en producción
+NOUPROGRAMA/used_car_scrape_like_45000.csv
+NOUPROGRAMA/artifacts/baseline_model.joblib
+NOUPROGRAMA/api(FASTAPI).py
+NOUPROGRAMA/api.py

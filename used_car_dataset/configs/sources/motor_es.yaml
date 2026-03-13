@@ -1,0 +1,26 @@
+name: "motor_es"
+base_url: "https://www.motor.es"
+
+http:
+  user_agent: "UsedCarResearchBot/1.0 (+contact@tu-dominio.com)"
+  timeout_s: 25
+  max_retries: 5
+  backoff_base_s: 1.0
+  backoff_max_s: 30.0
+
+politeness:
+  rate_limit_seconds: 10
+  respect_robots_txt: true
+  robots_cache_ttl_hours: 24
+
+discovery:
+  type: "sitemap"
+  sitemap_urls:
+    - "https://www.motor.es/xml/sitemap_vo.xml"
+  max_urls: 200000
+  url_include_regex:
+    - "^https://www\\.motor\\.es/.*$"
+  url_exclude_regex:
+    - "/api/"
+    - "/cdn-cgi/"
+  listing_key_regex: "/(vo-[^/?#]+|[^/?#]+)$"

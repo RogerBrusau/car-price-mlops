@@ -1,0 +1,37 @@
+{
+  "rows_raw": 12981,
+  "rows_used_after_clean": 12981,
+  "rows_train": 10384,
+  "rows_test": 2597,
+  "cutoff_scrape_datetime": "2026-02-18 15:12:17",
+  "mae_p50_eur": 2532.8523596924915,
+  "coverage_p10_p90": 0.7893723527146708,
+  "mean_interval_width_eur": 7947.2964263908925,
+  "cat_cols": [
+    "make_clean",
+    "model_clean",
+    "trim_clean",
+    "fuel_clean",
+    "transmission_clean",
+    "body_type_clean",
+    "province_clean",
+    "seller_type_clean",
+    "emissions_clean"
+  ],
+  "num_cols": [
+    "mileage_km_clean",
+    "power_kw_clean",
+    "engine_cc_clean",
+    "vehicle_age_years",
+    "listing_age_days",
+    "owners_clean",
+    "accidents_clean",
+    "damages_clean",
+    "equip_count",
+    "has_navegador",
+    "has_carplay",
+    "has_android_auto",
+    "has_cruise",
+    "has_camera"
+  ]
+}

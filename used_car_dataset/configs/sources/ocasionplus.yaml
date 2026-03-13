@@ -1,0 +1,104 @@
+# configs/sources/ocasionplus.yaml
+# Objetivo: que funcionen sin tocar código: discover.py + scheduler.py + fetch_detail.py
+
+# Identidad de la fuente (usa el mismo valor que escribe el parquet particionado)
+source: "ocasionplus"
+name: "ocasionplus"
+base_url: "https://www.ocasionplus.com"
+
+# HTTP común (discover.py lo usa)
+http:
+  user_agent: "UsedCarResearchBot/1.0 (+contact@tu-dominio.com)"
+  timeout_s: 25
+  max_retries: 5
+  backoff_base_s: 1.0
+  backoff_max_s: 30.0
+
+# Politeness (discover.py lo usa)
+politeness:
+  rate_limit_seconds: 2
+  respect_robots_txt: true
+  robots_cache_ttl_hours: 24
+
+# Robots (fetch_detail.py, tal como te lo pasé, lo usa aquí)
+robots:
+  user_agent: "UsedCarResearchBot/1.0 (+contact@tu-dominio.com)"
+  cache_dir: ".cache/robots"
+  cache_ttl_hours: 24
+
+# Discovery (discover.py)
+discovery:
+  type: "sitemap"
+  sitemap_urls:
+    - "https://www.ocasionplus.com/sitemap.xml"
+
+  # límites: subir para no cortarte en 5k
+  max_urls: 80000
+  max_sitemaps: 8000
+  progress_every: 2000
+  verbose: true
+
+  sitemap_include_regex: []
+
+  sitemap_exclude_regex:
+    # motos, causa raíz (incluye .gz)
+    - "(?:^|/)sitemap\\.fichas-motos\\.xml(?:\\.gz)?$"
+    - "(?:^|/)sitemap\\.motos_[^/]+\\.xml(?:\\.gz)?$"
+    - "(?:^|/)sitemap\\.(?:motos|moto)[^/]*\\.xml(?:\\.gz)?$"
+    - "/motos-segunda-mano"
+
+    # irrelevantes
+    - "sitemap\\.vender-mi-"
+    - "sitemap\\.concesionarios"
+    - "sitemap\\.caravana"
+    - "sitemap\\.principal"
+
+  # fichas de anuncio: patrón con año + id final
+  # más un fallback por si cambian el formato pero mantienen id al final
+  url_include_regex:
+    - "^https?://www\\.ocasionplus\\.com/coches-segunda-mano/[^/?#]+-\\d{4}-[a-z0-9]{6,12}$"
+    - "^https?://www\\.ocasionplus\\.com/coches-segunda-mano/[^/?#]+-[a-z0-9]{6,12}$"
+
+  url_exclude_regex:
+    - "/mas-info$"
+    - "/pedir-cita$"
+    - "/quiero-reservarlo$"
+    - "\\?gallery="
+    - "/search"
+    - "^https?://www\\.ocasionplus\\.com/coches-segunda-mano/.*/.+"
+    - "^https?://www\\.ocasionplus\\.com/motos-segunda-mano/"
+
+    # marcas claramente moto (primer token del slug)
+    - "(?i)^https?://www\\.ocasionplus\\.com/coches-segunda-mano/(?:yamaha|kawasaki|ducati|triumph|aprilia|harley(?:-davidson)?|ktm|piaggio|vespa|kymco|sym|benelli|royal-enfield|husqvarna|moto-guzzi|indian|mitt|keeway|rieju|derbi|daelim)-"
+
+    # suzuki modelos moto
+    - "(?i)^https?://www\\.ocasionplus\\.com/coches-segunda-mano/[^/?#]*-(?:gsxr|gsx-r|vstrom|v-strom)-"
+
+    # honda modelos moto
+    - "(?i)^https?://www\\.ocasionplus\\.com/coches-segunda-mano/[^/?#]*-(?:pcx(?:\\d{2,3})?|africa-twin|cb-\\d{2,4}[a-z0-9-]*|cb-500x|vfr-\\d{2,4})-"
+
+  # clave estable: captura el id final (6 a 12) del anuncio
+  # esto alimenta source_listing_key y tu scheduler hace listing_id = sha1(source:source_listing_key)
+  listing_key_regex: "/coches-segunda-mano/[^/?#]+-([a-z0-9]{6,12})$"
+
+
+queue:
+  # fase “llenar dataset”: no reencolar lo ya scrapeado cada día
+  fetch_ttl_hours: 720
+  priority_default: 0
+  dead_status_cooldown_days: 30
+  max_per_run: 0
+
+
+fetch_detail:
+  timeout_s: 20
+  max_retries: 3
+  backoff_base_s: 2.0
+  rate_limit_rps: 0.5
+
+  # fase “llenar dataset”: evita re scrapeo diario automático
+  refresh_interval_hours: 720
+
+  retry_days_404: 14
+  lock_timeout_minutes: 30
+  max_bytes: 5000000

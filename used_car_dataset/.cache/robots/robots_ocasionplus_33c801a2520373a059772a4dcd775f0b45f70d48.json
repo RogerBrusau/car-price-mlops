@@ -1,0 +1,137 @@
+{
+  "fetched_ts": 1770924885.3284879,
+  "rules": [
+    {
+      "allow": true,
+      "pattern": "*.js$"
+    },
+    {
+      "allow": true,
+      "pattern": "*.css$"
+    },
+    {
+      "allow": false,
+      "pattern": "/vender-mi-coche/cambio/*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?gallery=mantenimiento"
+    },
+    {
+      "allow": false,
+      "pattern": "*?gallery=revision"
+    },
+    {
+      "allow": false,
+      "pattern": "*?gallery=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*/print/"
+    },
+    {
+      "allow": false,
+      "pattern": "/*tipo="
+    },
+    {
+      "allow": false,
+      "pattern": "*?marca=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?modelo=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?cambio=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?combustible=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?price_min=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?price_max=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?km_min=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?km_max=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?carroceria=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?potencia_min=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?potencia_max=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?year_min=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?year_max=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?puertas=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?plazas=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?iva_deducible=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?km_0=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?ofertas_especiales=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?type=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?location=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*?sort=*"
+    },
+    {
+      "allow": false,
+      "pattern": "*/search"
+    },
+    {
+      "allow": false,
+      "pattern": "/coches-segunda-mano/*/mas-info"
+    },
+    {
+      "allow": false,
+      "pattern": "/coches-segunda-mano/*/pedir-cita"
+    },
+    {
+      "allow": false,
+      "pattern": "/coches-segunda-mano/*/quiero-reservarlo"
+    }
+  ]
+}
