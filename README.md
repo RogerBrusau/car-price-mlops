@@ -75,8 +75,8 @@ While this tool utilizes advanced statistical modeling, the second-hand car mark
 ### 1. Setup the Environment
 Clone the repository and install the required dependencies:
 ```bash
-git clone [https://github.com/RogerBrusau/car-price-mlops.git](https://github.com/RogerBrusau/car-price-mlops.git)
-cd car-price-mlops
+git clone [https://github.com/RogerBrusau/spanish-used-car-predictor.git](https://github.com/RogerBrusau/spanish-used-car-predictor.git)
+cd spanish-used-car-predictor
 pip install -r requirements.txt
 ```
 
